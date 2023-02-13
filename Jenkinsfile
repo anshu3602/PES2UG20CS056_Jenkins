@@ -31,6 +31,12 @@ pipeline{
         sh ' docker build -t <user>/<image>:$BUILD_NUMBER .'
         sh 'docker push <user>/<image>:$BUILD_NUMBER'
       }
+    }
+  }
+  post {
+    failure {
+      echo 'Pipeline failed '
+    }
   }
 }
 
